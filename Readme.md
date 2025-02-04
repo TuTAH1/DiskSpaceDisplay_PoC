@@ -1,0 +1,2 @@
+This work serves as a proof of concept, showcasing my vision of the most informative way to present disk information.
+The idea is simple — divide the occupied/free space bar into blocks of a fixed byte size (e.g., 100 GB). This way, both used and remaining space are immediately clear at a glance. Unlike my approach, the "classic" solid bar representation provides no absolute information about how much space is used or free; it only shows a relative percentage, which is of little practical use.
