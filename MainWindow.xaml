@@ -1,0 +1,59 @@
+﻿<Window x:Class="DiskSpaceDisplay_PoC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiskSpaceDisplay_PoC"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="spOptions" Orientation="Horizontal" Margin="0 0 0 10" CanHorizontallyScroll="True">
+                <TextBlock Text="Block Size:" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                <TextBox x:Name="tbBlockSizeInput" Width="60" Text="100" VerticalAlignment="Center" Margin="0 0 5 0" LostFocus="BlockSizeInput_LostFocus"/>
+                <ComboBox x:Name="coBlockSizeUnitSelector" Width="auto" VerticalAlignment="Center" SelectionChanged="BlockSizeUnitSelector_SelectionChanged">
+                    <ComboBoxItem Content="B" Tag="b"/>
+                    <ComboBoxItem Content="KB" Tag="kb"/>
+                    <ComboBoxItem Content="MB" Tag="mb"/>
+                    <ComboBoxItem Content="GB" Tag="gb"  IsSelected="True"/>
+                    <ComboBoxItem Content="TB" Tag="tb"/>
+                </ComboBox>
+                <TextBlock Text="Block cut:" VerticalAlignment="Center" Margin="10 0 5 0"/>
+                <ComboBox x:Name="coBlockCut" Width="auto" VerticalAlignment="Center" SelectionChanged="BlockSizeUnitSelector_SelectionChanged" ToolTip="End block cut making it more obvious to visually determine how much space is occupied, while Start block cut makes the remaining space easier to estimate">
+                    <ComboBoxItem Content="Start" Tag="start" IsSelected="True"/>
+                    <ComboBoxItem Content="End" Tag="end" />
+                </ComboBox>
+                <TextBlock Text="Base info unit:" VerticalAlignment="Center" Margin="10 0 5 0"/>
+                <ComboBox x:Name="coUnitSelector" Width="auto" VerticalAlignment="Center" SelectionChanged="UnitSelector_SelectionChanged">
+                    <ComboBoxItem Content="Legacy IEC (1024)" Tag="1024"/>
+                    <ComboBoxItem Content="Modern SI (1000)" Tag="1000" IsSelected="True"/>
+                </ComboBox>
+                <TextBlock Text="Show disk info:" VerticalAlignment="Center" Margin="10 0 5 0"/>
+                <ComboBox x:Name="coDiskInfo" Width="auto" VerticalAlignment="Center" SelectionChanged="UnitSelector_SelectionChanged">
+                    <ComboBoxItem Content="None" Tag="none"/>
+                    <ComboBoxItem Content="Total only" Tag="total" IsSelected="True"/>
+                    <ComboBoxItem Content="All" Tag="all"/>
+                </ComboBox>
+                <TextBlock Text="Line Style:" VerticalAlignment="Center" Margin="10 0 5 0"/>
+                <ComboBox x:Name="coLineStyle" Width="auto" VerticalAlignment="Center" SelectionChanged="UnitSelector_SelectionChanged">
+                    <ComboBoxItem Content="line (classic)" Tag="line"/>
+                    <ComboBoxItem Content="Blocks (proposed)" IsSelected="True" Tag="block"/>
+                    <ComboBoxItem Content="Blocks + line" Tag="block line"/>
+                    <ComboBoxItem Content="recursive blocks" Tag="recursive block" Visibility="Collapsed"/> <!--TODO-->
+                </ComboBox>
+                <CheckBox x:Name="cbAutoUpdate" VerticalAlignment="Center" Margin="10 0 0 0" IsChecked="True"></CheckBox>
+                <TextBlock Text="Auto update UI" VerticalAlignment="Center" Margin="5 0"></TextBlock>
+                <Button Content="Update UI" Width="auto" Margin="10 0 0 0" Padding="5,0" Click="UpdateButton_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="spDiskPanel" CanVerticallyScroll="True"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
