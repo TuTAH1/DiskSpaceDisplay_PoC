@@ -14,4 +14,4 @@ The idea is simple — divide the occupied/free space bar into blocks of a fixed
 * Total drive space can be easily visually estimated (only if it's larger than block size).
 * Remaining space still shown in percent¹ and it's easy to estimate absolute remaining/occupied space (how much GB left) visually.
 
-  ¹ A bit inaccurate, becouse I didn't deal with spacings in partial block fill calculations
+  ¹ A bit inaccurate, becouse I didn't deal with spacings in partial block fill calculations, but it's not the idea's problem
