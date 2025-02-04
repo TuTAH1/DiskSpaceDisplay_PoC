@@ -31,7 +31,7 @@ namespace DiskSpaceDisplay_PoC
 			InfoUnitMultiplier = int.Parse(((ComboBoxItem)coUnitSelector.SelectedItem).Tag.ToString());
 			BlockSize = GetBlockSize();
 #if !DEBUG
-			Init();
+			UpdateUI();
 #endif
 			Initialized = true;
 			this.SizeToContent = SizeToContent.Width;
