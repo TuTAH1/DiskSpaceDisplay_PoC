@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiskSpaceDisplay_PoC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1184">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -42,11 +42,14 @@
                 <TextBlock Text="Line Style:" VerticalAlignment="Center" Margin="10 0 5 0"/>
                 <ComboBox x:Name="coLineStyle" Width="auto" VerticalAlignment="Center" SelectionChanged="UnitSelector_SelectionChanged">
                     <ComboBoxItem Content="line (classic)" Tag="line"/>
-                    <ComboBoxItem Content="Blocks (proposed)" IsSelected="True" Tag="block"/>
+                    <ComboBoxItem Content="Blocks (proposed)" Tag="block"/>
+                    <ComboBoxItem Content="Blocks zebra (proposed v2)" IsSelected="True" Tag="block zebra"/>
                     <ComboBoxItem Content="Blocks + line" Tag="block line"/>
+                    <ComboBoxItem Content="Blocks zebra + line" Tag="block zebra line"/>
+
                     <ComboBoxItem Content="recursive blocks" Tag="recursive block" Visibility="Collapsed"/> <!--TODO-->
                 </ComboBox>
-                <CheckBox x:Name="cbAutoUpdate" VerticalAlignment="Center" Margin="10 0 0 0" IsChecked="True"></CheckBox>
+                <CheckBox x:Name="cbAutoUpdate" VerticalAlignment="Center" Margin="10 0 0 0" IsChecked="True" Checked="cbAutoUpdate_Checked"></CheckBox>
                 <TextBlock Text="Auto update UI" VerticalAlignment="Center" Margin="5 0"></TextBlock>
                 <Button Content="Update UI" Width="auto" Margin="10 0 0 0" Padding="5,0" Click="UpdateButton_Click"/>
             </StackPanel>
